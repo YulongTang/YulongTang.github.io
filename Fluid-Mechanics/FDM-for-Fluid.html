@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>FDM for Fluid Mechanics</title>
+    <style type="text/css">
+        h4 {
+            color:#6f36ee;
+        }
+    	a {
+        	text-decoration: none;
+        	vertical-align: baseline; 
+        	color:#6f36ee; 
+        	line-height:1.3;
+        	font-weight: 400;
+     	 	}
+      a:hover{
+        	color:#cc4b14;
+      	}
+      .blank-5{
+          text-indent: 5em;
+      }
+      div{
+          margin-left: 3em;
+          margin-right: 3em;
+      }
+      p {
+        color: #000000;
+      }
+      </style>
+  </head>
+  <body>
+  <div>
+    <h3>Notes: Finite Difference Method for Fluid Mechanics</h3>
+    <p>These notes are based on the book <strong><i>Introduction to Finite-Difference for Numerical Fluid Dynamics</i></strong>
+        written by <strong>Evan Scannapieco & Francis H. Harlow.</strong></p>
+
+    <h4>Equations for 2D Eulerian Incompressible/Compressible Fluid Flow</h4>
+        <p class="blank-5"><img src="FDM-for-Fluid/equations-for-2D-Eulerian-fluid-flow.jpg" height="450" width="800"></p>
+        <p>It is worth mentioning that a buoyancy term can by added to the momentum equations, take the incompressible flow
+        for example: </p>
+        <p class="blank-5"><img src="FDM-for-Fluid/buoyancy-equation-incompressible.jpg" height="200" width="400"></p>
+        <p>the buoyancy is caused by a small changes in density, and this term can be solved explicitly.</p>
+
+    <h4>Stable Conditions</h4>
+        <p>There are two stable conditions must to be satisfied for an explicit FDM procedure: </p>
+        <p class="blank-5"><img src="FDM-for-Fluid/stable-conditions-for-FDM.jpg" height="250" width="450"></p>
+
+
+    <h4>Explicit and Implicit</h4>
+        <h5>For incompressible flow (Euler method)</h5>
+        <p>To solve the momentum equations of a 2D incompressible fluid flow, a method that combines both explicit and
+        implicit techniques is preferred, because of a stability condition that is present in the pressure term in the
+        momentum equation.</p>
+        <p>For an ADIABATIC system, the sound speed can be expressed as</p>
+        <p class="blank-5">c^2 = dp/dρ</p>
+        <p>for an incompressible flow, ρ is constant thus dρ→∞, but p is not constant, which leads c^2→∞. The Courant
+        condition states that</p>
+        <p class="blank-5">(|u|+c)dt/dx < 1</p>
+        <p>indicating that the system will be <strong>unstable if pressures are computed explicitly.</strong></p>
+        <p>While the pressure contributions to momentum equations must be computed implicitly, then, the rest of the terms
+        can be computed faster using an explicit method.</p>
+        <h5>For compressible flow</h5>
+        <p>For compressible flow, as the sound speed is not infinite, explicit method can be used for pressure term, with
+        Courant condition and Diffusion condition satisfied conditionally.</p>
+
+
+    <h4>Donor-cell and cell-centered technique</h4>
+        <h5>For 2D incompressible flow (Euler method)</h5>
+        <p>In the momentum equations, the advective terms can be calculated using either a donor-cell or cell-centered
+        technique.</p>
+        <p>A cell-centered approach is allowable because the viscous terms prevents numerical instability, this approach
+        results in a code that is able to resolve <strong>delicate</strong> physical phenomena that occur at <strong>
+        low viscosity</strong>, such as the KARMAN VORTEX STREET.</p>
+        <p>Use of the donor-cell technique results in a code that is able to handle more <strong>violent</strong>
+        phenomena, such as the rushing of fluid over a stationary block. It allows for systems at higher velocities
+        and with more change in velocities to be simulated without becoming numerical unstable, but loses much of
+        the precision of the cell-centered technique.</p>
+
+    <br><br><hr>
+    <p>Aaron Tang</p>
+  </div>
+  </body>
+</html>

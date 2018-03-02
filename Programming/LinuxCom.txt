@@ -1,0 +1,42 @@
+///Bounding bettween dirctories
+
+pwd     :   Print Working Directory
+cd      :   Change Directory
+cd ..   :   Go back to the folder above the working directory
+cd ./   :   (Then press TAB) Show all the files in the directory 
+cd ./D  :   (Then press TAB) List all the files start with a "D"
+echo    :   Echo a text
+ls      :   List the files and folders in the current directory 
+ls -a   :   List all files and folders in the current directory
+ls -l   :   List all files and folders in the current directory with long list
+
+///Inspecting files & folders
+
+mkdir   :   Make a Directory
+touch   :   [filename] Create a file
+wc      :   [filename] Word count, display the lines, words & characters in a file
+cat     :   [filename] Concatenate, print the characters in a file to the console
+less    :   [filename] View a large file. It will "takes over" your terminal, press q key to quit
+q       :   To quit
+head    :   [-n 4] [filename] View the first (4) lines of a file
+tail    :   [-n 4] [filename] View the last (4) lines of a file
+>       :   [filename] Output redirection, print text to a text file, overwrite the original file.
+            For example: echo "Hi" > todo.txt
+>>      :   [filename] Append text to a text file.
+xed     :   [filename] Open the file with xed text editor.
+
+///Migration and Destructon
+
+mv      :   [filename] [destination] Move a file/folder to a destination folder.
+            [filename] [desfilename] Rename a file/folder to a destination name.
+cp      :   [filename] [destination] Copy a file to a destination folder.
+cp -r   :   [filename] Copy (recusive) a folder to a destination folder.
+rm      :   [filename] Remove/delete a file (permanently), should be careful.
+rm -rf  :   [folder] Remove/delete a folder (permanently), should be careful.
+
+///Self help
+
+man     :   [command] View the manual of a command. Type /[keywork] to search a keywork in the manual.
+            Press n key to search for the next occurrence, and SHIFT+n the previouse one.
+apropos :   [keyword] List commands that related to keyword.
+
