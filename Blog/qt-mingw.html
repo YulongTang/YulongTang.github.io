@@ -25,7 +25,7 @@
 
 
 <section>
-	<h1>QT-MinGW</h1>
+	<h1>QT编程</h1>
 	<p>Last update: 2018-06-12 16:35</p>
 	
 </section>
@@ -37,6 +37,10 @@
         <li><b><a href="#one_one">1.1 QT-MinGW在Windows下的环境配置</a></b></li>
 
         <li><b><a href="#one_two">1.2 关于QT Creator构建环境</a></b></li>
+    </ul>
+	<h3>2. QT-MinGW发行程序</h3>
+	<ul>
+        <li><b><a href="#two_one">2.1 使用windeployqt.exe查找依赖库</a></b></li>
     </ul>
 </section>
 
@@ -79,6 +83,22 @@
 <p><a href="#zero" class="smallgrey">Back to top</a></p>
 </section>
 
+<section id="two_one">
+    <h3>2.1 使用windeployqt.exe查找依赖库</h3>
+    <p>Qt 官方开发环境使用的动态链接库方式，在发布生成的exe程序时，需要复制一大堆 dll，如果自己去复制dll，很可能丢三落四，
+	导致exe在别的电脑里无法正常运行。因此 Qt 官方开发环境里自带了一个工具：windeployqt.exe。以官方 Qt 5.10.1+MinGW 开发环境为例:</p>
+	<p>1) 从开始菜单找到qt命令行<b>Qt 5.10.1 for Desktop (MinGW 5.3.0 32 bit)</b></p>
+	<p>2) cd到目标exe的目录，如D:\Release</p>
+	<p>3) 然后使用windeployqt工具命令:</p>
+	<div class="codeblock"><pre><code>
+	windeployqt app.exe
+	</code></pre></div>
+	<p>之后就可以看见windeployqt 工具自动复制的插件文件夹和dll文件、qm文件。这时候得到的就完整的可执行程序发布集合，依赖关系都解决好了。</p>
+	<p><img src="assets/images/qt_mingw_2_1.jpg" class="no-strech-image"></img></p>
+	
+
+<p><a href="#zero" class="smallgrey">Back to top</a></p>
+</section>
 
 <section id="need_help">
 <h4>Correct me?</h4>
