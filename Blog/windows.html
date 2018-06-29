@@ -1,0 +1,108 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+<meta charset="utf-8">	
+<title>Blog | Windows</title>	
+<meta name="description" content="Focus Template Documentation">
+<meta name="author" content="EffekThemes">
+<link rel="stylesheet" href="assets/css/style.css" media="all">	
+<script src="assets/js/jquery.js"></script>	
+<script src="assets/js/jquery.scrollTo.js"></script>
+<script src="assets/js/jquery.easing.js"></script>	
+<script>document.createElement('section');var duration='500',easing='swing';</script>
+<script src="assets/js/script.js"></script>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<section>
+	<h1>Windows疑难杂症</h1>
+	<p>Last update: 2018-06-29 21:35</p>
+	<a href="index.html">back to index</a>
+	
+</section>
+
+<section id="zero">
+<p>目录：</p>
+    <h3>1. Windows启动问题</h3>
+    <ul>
+        <li><b><a href="#one_one">1.1 系统蓝屏：Unmountable_boot_volume</a></b></li>
+    </ul>
+</section>
+
+<section id="one">
+<h3>1. Windows启动问题</h3>  
+</section>
+
+<section id="one_one">
+	<h3>1.1 系统蓝屏：Unmountable_boot_volume</h3>
+    <p>笔者用迅雷下载一个大文件的时候，由于下载速度过快导致系统一直处于假死机的状态，于是手贱地强制关机，于是悲剧发生了：<br>
+	当我重启计算机的时候，系统蓝屏，提示<b>Unmountable_boot_volume</b>。并且无论如何也修复不了。</p>
+	<p>网上搜索解决办法，分别尝试了以下几种方法：</p>
+	<p><b>(1)进入BIOS确认是否识别出硬盘，若识别出硬盘则说明硬盘没坏，拆机重新插拔硬盘断电。</b></p>
+	<div class="codeblock"><pre><code>
+	不成功。进入BIOS后发现硬盘并没有损坏，但是给硬盘断电后仍然蓝屏。问题不在硬盘上，而在系统上。
+	</code></pre></div>
+	<p><b>(2)进入安全模式，修复系统。</b></p>
+	<div class="codeblock"><pre><code>
+	不成功。根本无法进入安全模式。看来问题比较严重。
+	</code></pre></div>
+	<p><b>(3)chkdsk。</b>
+	<br><br>step-1: Start your computer using a Windows 10 DVD or a USB drive. If you don't have any Windows 10 media available, visit 
+	<a href="https://www.microsoft.com/en-us/software-download/windows10">this page</a> and follow the steps to create one 
+	using the Media Creation Tool.
+	<br><br>step-2: Once starting using a DVD or USB device, select the "Repair your computer" option  located at the lower-left corner.
+	<br><br>step-3: Choose "Command prompt", type <b>chkdsk /r C:</b> then press "Enter". If your bootable drive is a letter other than "c",
+	replace "C:" with the bootable drive you use.
+	<br><br>step-4: Be patient while chkdsk checks your drive for errors. It could table a really long  time.</p>
+	<div class="codeblock"><pre><code>
+	不成功。检查到错误，一些位置无法读取，修复失败。重启仍然蓝屏。
+	</code></pre></div>
+	<p><b>(4)Automatic Repair。</b>
+	<br><br>step-1: Start your computer using a Windows 10 DVD or a USB drive. If you don't have any Windows 10 media available, visit 
+	<a href="https://www.microsoft.com/en-us/software-download/windows10">this page</a> and follow the steps to create one 
+	using the Media Creation Tool.
+	<br><br>step-2: Once starting using a DVD or USB device, select the "Repair your computer" option  located at the lower-left corner.
+	<br><br>step-3: Choose "Troubleshot" > "Advanced options" > "Automatic Repair".
+	<br><br>step-4: Select the OS you wish to repair. Be patient while the utility attempts to repair the files.</p>
+	<div class="codeblock"><pre><code>
+	不成功。自动修复失败。
+	</code></pre></div>
+	<p>无奈之下，只能采取重装系统的下策了。</p>
+	<p><b>(5)最终方案：重装系统。</b>
+	<br><br>step-1: 在 <a href="https://www.microsoft.com/en-us/software-download/windows10">微软的官方网站</a>下载并制作了启动盘。
+	<br><br>step-2: 打开BIOS设置，选择与硬盘分区表格式一致的引导方式，启动U盘中的系统。
+	<br><br>step-3: 建议先尝试修复，若修复未遂，再重装系统。
+	<br><br>step-4: 重装时最好选择升级，若不支持升级，就把系统装在C分区覆盖原来的系统。之后C区会被清理，但是其他分区的数据得以保存。
+	<br><br>安装完成后，拔掉U盘重新启动计算机，然后设置新的系统。</p>
+	<div class="codeblock"><code>
+	这是下策，但是也是终极解决方案。
+	<br><br>关于step-2的说明：win8/win10系统均添加快速启动功能，预装的win8/win10电脑默认都是UEFI引导的GPT硬盘。
+	传统的引导方式为Legacy引导的MBR硬盘。UEFI必须跟GPT对应，同理Legacy必须和MBR对应。
+	如果引导方式和分区格式不对应，则会遇到"无法在驱动器0的分区1上安装"的问题。
+	</code></div>
+
+<p><a href="#zero" class="smallgrey">Back to top</a></p>
+</section>
+
+<section id="need_help">
+<h4>Correct me?</h4>
+<p>If, however, you&#39;re unhappy with something, please remind me: <a href="mailto:tangyulong202@126.com">tangyulong202@126.com.</a>
+   Your opinions would help me a lot!</p>
+<p>Yours Sincerely,<br>Aaron</p>
+
+</section>
+
+
+</div>
+</body>
+</html>
