@@ -1,0 +1,92 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+<meta charset="utf-8">	
+<title>Blog | C++</title>	
+<meta name="description" content="Focus Template Documentation">
+<meta name="author" content="EffekThemes">
+<link rel="stylesheet" href="assets/css/style.css" media="all">	
+<script src="assets/js/jquery.js"></script>	
+<script src="assets/js/jquery.scrollTo.js"></script>
+<script src="assets/js/jquery.easing.js"></script>	
+<script>document.createElement('section');var duration='500',easing='swing';</script>
+<script src="assets/js/script.js"></script>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<section>
+	<h1>C++</h1>
+	<p>Last update: 2018-06-29 21:35</p>
+	<a href="index.html">back to index</a>
+	
+</section>
+
+<section id="zero">
+<p>目录：</p>
+    <h3>1. C++编译</h3>
+    <ul>
+        <li><b><a href="#one_one">1.1 利用notepad++制作一个轻量级C/C++编译器</a></b></li>
+    </ul>
+</section>
+
+<section id="one">
+<h3>1. C++编译</h3>  
+</section>
+
+<section id="one_one">
+	<h3>1.1 利用notepad++制作一个轻量级C/C++编译器</h3><br>
+    <p>在网上看到一个很有意思的博客，<a href="https://blog.csdn.net/f_zmmfs/article/details/79189510">原文地址</a>
+	这里记录一下，方便以后查阅。</p>
+	<p><b>(1)准备工作：</b></p>
+	<div><p><pre>	下载MinGW：      <a href="http://www.mingw.org/download/installer">mingw-get-setup</a></pre>
+	<pre>	下载Notepad++：  <a href="https://notepad-plus-plus.org/">notepad++</a><pre></p></div>
+	
+	<p><b>(2)配置MingGW的环境变量。</b>
+	<br><br>主要目的是让系统能够找到g++的位置。将<b>MinGW\bin</b>的路径添加到<b>path系统变量</b>，如D:\MinGW\bin。
+	<br><br>然后打开cmd，输入g++ -v，如果出现下图所示信息，说明MinGW配置成功。
+	<br><img src="assets/images/cpp_1_1.png">
+	
+	<p><b>(3)设置notepad++运行命令与快捷键。</b>
+	<br><br>点击notepad++菜单栏的运行》》运行，复制以下内容到输入框：
+	<br><br><b>cmd /k cd /d "$(CURRENT_DIRECTORY)" & g++ "$(FILE_NAME)" -o "$(NAME_PART)" & "$(NAME_PART).exe"</b>
+	<br><div align="center"><img src="assets/images/cpp_1_2.jpg">　<img src="assets/images/cpp_1_3.jpg"></div>
+	<br>点击保存。在弹出的对话框输入命令的名称如C++MinGW，还可以设置快捷键。
+	<br><br>再次点击菜单栏就可以看到自己的编译器命令了。然后在notepad++里面键入如下代码，保存为.cpp文件。
+	运行C++MinGW命令，将弹出控制台并输出"hello, notepad++"</p>
+	<div class="codeblock"><pre><code>
+	#include <iostream>
+	using namespace std;
+	int main(){
+		cout << "hello, notepad++" << endl;
+		cin.get();
+		return 0;
+	}
+	</code></pre></div>
+	<p><b>注：在MinGW贴吧里面，有吧友制作了完全绿色版的notepad+MinGW的编译器，支持C/C++。</b>
+	<a href="https://tieba.baidu.com/p/5481992017">点我传送</a></p>
+
+<p><a href="#zero" class="smallgrey">Back to top</a></p>
+</section>
+
+<section id="need_help">
+<h4>Correct me?</h4>
+<p>If, however, you&#39;re unhappy with something, please remind me: <a href="mailto:tangyulong202@126.com">tangyulong202@126.com.</a>
+   Your opinions would help me a lot!</p>
+<p>Yours Sincerely,<br>Aaron</p>
+
+</section>
+
+
+</div>
+</body>
+</html>
