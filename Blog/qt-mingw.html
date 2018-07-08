@@ -45,6 +45,7 @@
 	<h3>3. QT-VTK</h3>
 	<ul>
         <li><b><a href="#three_one">3.1 编译VTK</a></b></li>
+		<li><b><a href="#three_two">3.2 使用QT编程注意事项</a></b></li>
     </ul>
 </section>
 
@@ -119,10 +120,39 @@
 <section id="three_one">
     <h3>3.1 编译VTK</h3>
     <p>编译VTK请参考以下文章:</p>
-	<p>1. <a href="https://blog.csdn.net/wyy626562203/article/details/80501560">编译vtk8.1.1</a>. 采用vs和MinGW两种方式编译vtk。</p>
+	<p>1. <a href="https://blog.csdn.net/wyy626562203/article/details/80501560">编译vtk8.1.1</a>. 采用vs和MinGW两种方式编译vtk。
+	亲测可用。</p>	
 	
+	<p><a href="#zero" class="smallgrey">Back to top</a></p>
+</section>
 
-<p><a href="#zero" class="smallgrey">Back to top</a></p>
+<section id="three_two">
+    <h3>3.2 使用QT编程注意事项</h3>
+    <h4>3.1.1 出现类似 no override found for vtkpolydatamapper 的错误</h4>
+	<p>在QT中添加以下初始化代码</p>
+	<div class="codeblock"><pre><code>
+	#include "vtkAutoInit.h"
+	VTK_MODULE_INIT(vtkRenderingOpenGL2) // VTK was built with vtkRenderingOpenGL2
+	VTK_MODULE_INIT(vtkInteractionStyle)
+	</code></pre></div>
+	<h4>3.1.2 包含目录、依赖库和动态链接库</h4>
+	<p>① 包含目录在vtk安装目录的include/vtk-8.1文件夹下，如<b>VTK-8/include/vtk-8.1</b>，使用如下命令添加包含库</p>
+	<div class="codeblock"><pre><code>
+	INCLUDEPATH += E:/VTK-8/vtk-lib/include/vtk-8.1
+	</code></pre></div>
+	<p>② 依赖库在vtk安装目录的lib文件夹下，如 <b>VTK-8/lib</b>, lib文件是以.dll.a或者.lib结尾。添加lib文件时，可采用如下形式：</p>
+	<div class="codeblock"><pre><code>
+	LIBS += -LE:/VTK-8/vtk-lib/lib/ \
+        -llibvtkalglib-8.1\
+        -llibvtkChartsCore-8.1 \
+        -llibvtkCommonColor-8.1 \
+        -llibvtkCommonComputationalGeometry-8.1 \
+        -llibvtkCommonCore-8.1 \
+	</code></pre></div>
+	<p>其中-L指定文件夹，-l指定lib文件名（不需要带后缀）。</p>
+	<p>③ 动态链接库在vtk安装目录的bin文件夹下，如 <b>VTK-8/bin</b>，运行时需把需要的动态链接库拷贝到exe程序目录下。</p>
+	
+	<p><a href="#zero" class="smallgrey">Back to top</a></p>
 </section>
 
 <section id="need_help">
