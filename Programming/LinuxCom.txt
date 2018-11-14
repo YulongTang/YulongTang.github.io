@@ -40,3 +40,5 @@ man     :   [command] View the manual of a command. Type /[keywork] to search a 
             Press n key to search for the next occurrence, and SHIFT+n the previouse one.
 apropos :   [keyword] List commands that related to keyword.
 
+///search
+grep    :  grep -r sampleDict ./    在当前文件夹(及其子文件夹)下寻找sampleDict文件。
